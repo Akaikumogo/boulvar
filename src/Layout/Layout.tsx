@@ -9,13 +9,14 @@ import davlatAka from '../assets/logo/tarh.png';
 import { GiHamburgerMenu } from 'react-icons/gi';
 
 import { Outlet, useNavigate, useParams } from 'react-router-dom';
+import { usePostRequst } from '../API';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
 const PageLayout = () => {
   const [open, setOpen] = useState(false);
   const { lang } = useParams();
-
+  const { mutate } = usePostRequst();
   const items: MenuItem[] = [
     {
       key: '',
@@ -106,6 +107,14 @@ const PageLayout = () => {
                   onClick={(e) => {
                     setOpen(false);
                     navigate(e.key);
+                    mutate({
+                      data:
+                        e.key === 'selling-apartments'
+                          ? '66666'
+                          : e.key === 'table'
+                          ? '55555'
+                          : '66666'
+                    });
                   }}
                   defaultSelectedKeys={[navValue[2]]}
                   activeKey=""

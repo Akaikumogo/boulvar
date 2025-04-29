@@ -54,12 +54,12 @@ const App = () => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0, background: 'black' }}
           transition={{ duration: 0.1 }}
-          className=" min-w-[1820px] min-h-[1080px] mx-auto bg-black text-white   overflow-hidden"
+          className=" min-w-[1820px] min-h-[1080px] w-screen mx-auto bg-black text-white   overflow-hidden"
         >
           <Spotlight />
           <motion.div
             layoutId="container"
-            className="relative min-w-[1820px] min-h-[1080px] flex items-center justify-center z-10 mx-auto w-full  p-4 pt-20 md:pt-0"
+            className="relative min-w-[1820px] min-h-[1080px] w-screen flex items-center justify-center z-10 mx-auto   p-4 pt-20 md:pt-0"
           >
             <motion.div layoutId="content">
               <motion.h1
@@ -96,12 +96,12 @@ const App = () => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0, background: 'black' }}
           transition={{ duration: 0.1 }}
-          className="min-w-[1820px] min-h-[1080px] mx-auto bg-black text-white   overflow-hidden"
+          className="min-w-[1820px] min-h-[1080px] w-screen mx-auto bg-black text-white   overflow-hidden"
         >
           <Spotlight />
           <motion.div
             layoutId="container"
-            className="relative min-w-[1820px] min-h-[1080px] flex items-center justify-center z-10 mx-auto w-full pt-20 md:pt-0"
+            className="relative min-w-[1820px] min-h-[1080px] w-screen flex items-center justify-center z-10 mx-auto pt-20 md:pt-0"
           >
             <motion.div layoutId="content">
               <motion.h1
