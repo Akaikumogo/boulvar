@@ -115,10 +115,10 @@ const RoomTable = () => {
         className="min-w-[1600px] min-h-[860px] relative  -black
           for-max  overflow-auto flex flex-col gap-10  w-full h-full px-[100px] py-[100px] "
       >
-        <div className="w-full flex  sticky left-0  z-10 mt-[50px] gap-1 text-center text-2xl font-bold">
+        <div className="w-full flex  gap-1 text-center text-2xl font-bold">
           <h1>Boulvar</h1>|
           <h1 className="font-mono text-[12px] text-green-600">
-            {lang === 'tr' ? 'Boş' : 'Empty'}:{' '}
+            {lang === 'uz' ? "Bo'sh" : lang === 'ru' ? 'Свободно' : 'Empty'}:{' '}
             {
               allAppartments?.filter(
                 (apartment) => apartment.status === 'empty'
@@ -136,7 +136,12 @@ const RoomTable = () => {
           </h1>
           |
           <h1 className="font-mono text-[12px] text-blue-600">
-            {lang === 'tr' ? 'Broned' : 'Broned'}:{' '}
+            {lang === 'uz'
+              ? 'Bron qilingan'
+              : lang === 'ru'
+              ? 'Забронировано'
+              : 'Broned'}
+            :{' '}
             {
               allAppartments?.filter(
                 (apartment) => apartment.status === 'broned'
@@ -154,7 +159,7 @@ const RoomTable = () => {
           </h1>
           |
           <h1 className="font-mono text-[12px] text-red-600">
-            {lang === 'tr' ? 'Satıldı' : 'Sold'}:{' '}
+            {lang === 'uz' ? 'Sotilgan' : lang === 'ru' ? 'Продано' : 'Sold'}:{' '}
             {
               allAppartments?.filter(
                 (apartment) => apartment.status === 'selled'
@@ -175,9 +180,13 @@ const RoomTable = () => {
           <div className="w-[500px] ">
             <div className="w-full flex  gap-1 text-center text-2xl font-bold">
               {' '}
-              <h1>{lang === 'tr' ? 'Blok' : 'Block'} A</h1>|
+              <h1>
+                {lang === 'uz' ? 'Blok' : lang === 'ru' ? 'Блок' : 'Block'} A
+              </h1>
+              |
               <h1 className="font-mono text-[12px] text-green-600">
-                {lang === 'tr' ? 'Boş' : 'Empty'}:{' '}
+                {lang === 'uz' ? "Bo'sh" : lang === 'ru' ? 'Свободно' : 'Empty'}
+                :{' '}
                 {
                   ablock?.filter((apartment) => apartment.status === 'empty')
                     .length
@@ -193,7 +202,12 @@ const RoomTable = () => {
               </h1>
               |
               <h1 className="font-mono text-[12px] text-blue-600">
-                {lang === 'tr' ? 'Broned' : 'Broned'}:{' '}
+                {lang === 'uz'
+                  ? 'Bron qilingan'
+                  : lang === 'ru'
+                  ? 'Забронировано'
+                  : 'Broned'}
+                :{' '}
                 {
                   ablock?.filter((apartment) => apartment.status === 'broned')
                     .length
@@ -209,7 +223,12 @@ const RoomTable = () => {
               </h1>
               |
               <h1 className="font-mono text-[12px] text-red-600">
-                {lang === 'tr' ? 'Satıldı' : 'Sold'}:{' '}
+                {lang === 'uz'
+                  ? 'Sotilgan'
+                  : lang === 'ru'
+                  ? 'Продано'
+                  : 'Sold'}
+                :{' '}
                 {
                   ablock?.filter((apartment) => apartment.status === 'selled')
                     .length
@@ -231,9 +250,13 @@ const RoomTable = () => {
           <div className="w-[500px] ">
             <div className="w-full flex  gap-1 text-center text-2xl font-bold">
               {' '}
-              <h1>{lang === 'tr' ? 'Blok' : 'Block'} B</h1>|
+              <h1>
+                {lang === 'uz' ? 'Blok' : lang === 'ru' ? 'Блок' : 'Block'} B
+              </h1>
+              |
               <h1 className="font-mono text-[12px] text-green-600">
-                {lang === 'tr' ? 'Boş' : 'Empty'}:{' '}
+                {lang === 'uz' ? "Bo'sh" : lang === 'ru' ? 'Свободно' : 'Empty'}
+                :{' '}
                 {
                   cblock?.filter((apartment) => apartment.status === 'empty')
                     .length
@@ -249,7 +272,12 @@ const RoomTable = () => {
               </h1>
               |
               <h1 className="font-mono text-[12px] text-blue-600">
-                {lang === 'tr' ? 'Broned' : 'Broned'}:{' '}
+                {lang === 'uz'
+                  ? 'Bron qilingan'
+                  : lang === 'ru'
+                  ? 'Забронировано'
+                  : 'Broned'}
+                :{' '}
                 {
                   bblock?.filter((apartment) => apartment.status === 'broned')
                     .length
@@ -265,7 +293,12 @@ const RoomTable = () => {
               </h1>
               |
               <h1 className="font-mono text-[12px] text-red-600">
-                {lang === 'tr' ? 'Satıldı' : 'Sold'}:{' '}
+                {lang === 'uz'
+                  ? 'Sotilgan'
+                  : lang === 'ru'
+                  ? 'Продано'
+                  : 'Sold'}
+                :{' '}
                 {
                   bblock?.filter((apartment) => apartment.status === 'selled')
                     .length
@@ -287,9 +320,13 @@ const RoomTable = () => {
           <div className="w-[500px] ">
             <div className="w-full flex  gap-1 text-center text-2xl font-bold">
               {' '}
-              <h1>{lang === 'tr' ? 'Blok' : 'Block'} C</h1>|
+              <h1>
+                {lang === 'uz' ? 'Blok' : lang === 'ru' ? 'Блок' : 'Block'} C
+              </h1>
+              |
               <h1 className="font-mono text-[12px] text-green-600">
-                {lang === 'tr' ? 'Boş' : 'Empty'}:{' '}
+                {lang === 'uz' ? "Bo'sh" : lang === 'ru' ? 'Свободно' : 'Empty'}
+                :{' '}
                 {
                   cblock?.filter((apartment) => apartment.status === 'empty')
                     .length
@@ -305,7 +342,12 @@ const RoomTable = () => {
               </h1>
               |
               <h1 className="font-mono text-[12px] text-blue-600">
-                {lang === 'tr' ? 'Broned' : 'Broned'}:{' '}
+                {lang === 'uz'
+                  ? 'Bron qilingan'
+                  : lang === 'ru'
+                  ? 'Забронировано'
+                  : 'Broned'}
+                :{' '}
                 {
                   cblock?.filter((apartment) => apartment.status === 'broned')
                     .length
@@ -321,7 +363,12 @@ const RoomTable = () => {
               </h1>
               |
               <h1 className="font-mono text-[12px] text-red-600">
-                {lang === 'tr' ? 'Satıldı' : 'Sold'}:{' '}
+                {lang === 'uz'
+                  ? 'Sotilgan'
+                  : lang === 'ru'
+                  ? 'Продано'
+                  : 'Sold'}
+                :{' '}
                 {
                   cblock?.filter((apartment) => apartment.status === 'selled')
                     .length
@@ -339,54 +386,68 @@ const RoomTable = () => {
             <div className=" w-full grid grid-cols-5 gap-5">
               {mapF(cblock || [])}
             </div>
-          </div>{' '}
+          </div>
           <div className="w-[500px] ">
             <div className="w-full flex  gap-1 text-center text-2xl font-bold">
               {' '}
-              <h1>{lang === 'tr' ? 'Blok' : 'Block'} D</h1>|
+              <h1>
+                {lang === 'uz' ? 'Blok' : lang === 'ru' ? 'Блок' : 'Block'} D
+              </h1>
+              |
               <h1 className="font-mono text-[12px] text-green-600">
-                {lang === 'tr' ? 'Boş' : 'Empty'}:{' '}
+                {lang === 'uz' ? "Bo'sh" : lang === 'ru' ? 'Свободно' : 'Empty'}
+                :{' '}
                 {
                   dblock?.filter((apartment) => apartment.status === 'empty')
                     .length
                 }
-                |25|
+                |20|
                 {Math.round(
                   ((dblock?.filter((apartment) => apartment.status === 'empty')
                     ?.length || 0) /
-                    25) *
+                    20) *
                     100
                 )}
                 %
               </h1>
               |
               <h1 className="font-mono text-[12px] text-blue-600">
-                {lang === 'tr' ? 'Broned' : 'Broned'}:{' '}
+                {lang === 'uz'
+                  ? 'Bron qilingan'
+                  : lang === 'ru'
+                  ? 'Забронировано'
+                  : 'Broned'}
+                :{' '}
                 {
                   dblock?.filter((apartment) => apartment.status === 'broned')
                     .length
                 }
-                |25|
+                |20|
                 {Math.round(
                   ((dblock?.filter((apartment) => apartment.status === 'broned')
                     ?.length || 0) /
-                    25) *
+                    20) *
                     100
                 )}
                 %
               </h1>
               |
               <h1 className="font-mono text-[12px] text-red-600">
-                {lang === 'tr' ? 'Satıldı' : 'Sold'}:{' '}
+                {lang === 'uz'
+                  ? 'Sotilgan'
+                  : lang === 'ru'
+                  ? 'Продано'
+                  : 'Sold'}
+                :{' '}
                 {
                   dblock?.filter((apartment) => apartment.status === 'selled')
                     .length
                 }
-                |25|{' '}
+                |20|{' '}
                 {Math.round(
                   ((dblock?.filter((apartment) => apartment.status === 'selled')
                     ?.length || 0) /
-                    25) *
+                    20) *
                     100
                 )}
                 %

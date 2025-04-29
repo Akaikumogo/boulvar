@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
-
+import 'react-lazy-load-image-component/src/effects/blur.css';
 import { AnimatePresence, motion } from 'motion/react';
 import { Spotlight } from '../Spotlights';
 import Layout from '../Layout/Layout';
-
+import roboservice from '../assets/logo/ROBO SERVICEs.png';
+import davlatAka from '../assets/logo/SILVER TEA0 (1).png';
+import LazyImage from '../components/LazyImage';
 const App = () => {
   const navigate = useNavigate();
 
@@ -52,12 +54,12 @@ const App = () => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0, background: 'black' }}
           transition={{ duration: 0.1 }}
-          className="w-screen mx-auto bg-black text-white  h-screen overflow-hidden"
+          className=" min-w-[1820px] min-h-[1080px] mx-auto bg-black text-white   overflow-hidden"
         >
           <Spotlight />
           <motion.div
             layoutId="container"
-            className="relative h-screen flex items-center justify-center z-10 mx-auto w-full max-w-7xl p-4 pt-20 md:pt-0"
+            className="relative min-w-[1820px] min-h-[1080px] flex items-center justify-center z-10 mx-auto w-full max-w-7xl p-4 pt-20 md:pt-0"
           >
             <motion.div layoutId="content">
               <motion.h1
@@ -72,6 +74,23 @@ const App = () => {
                 layoutId="buttonContainer"
                 className="flex items-center justify-center"
               ></motion.div>
+              <motion.div
+                layoutId="logo"
+                className="flex items-center justify-center gap-4"
+              >
+                <LazyImage
+                  src={roboservice}
+                  alt="RoboService"
+                  className="h-32 w-32 rounded-full object-cover"
+                  effect="blur"
+                />
+                <LazyImage
+                  src={davlatAka}
+                  alt="Davlat Aka"
+                  className="h-32 w-32 rounded-full object-cover"
+                  effect="blur"
+                />
+              </motion.div>
             </motion.div>
           </motion.div>
         </motion.div>
@@ -84,12 +103,12 @@ const App = () => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0, background: 'black' }}
           transition={{ duration: 0.1 }}
-          className="w-screen mx-auto bg-black text-white  h-screen overflow-hidden"
+          className="min-w-[1820px] min-h-[1080px] mx-auto bg-black text-white   overflow-hidden"
         >
           <Spotlight />
           <motion.div
             layoutId="container"
-            className="relative h-screen flex items-center justify-center z-10 mx-auto w-full max-w-7xl  pt-20 md:pt-0"
+            className="relative min-w-[1820px] min-h-[1080px] flex items-center justify-center z-10 mx-auto w-full max-w-7xl  pt-20 md:pt-0"
           >
             <motion.div layoutId="content">
               <motion.h1
@@ -99,7 +118,6 @@ const App = () => {
                 Boulvar <br /> RoboService <span className="font-light">x</span>{' '}
                 Akaikumogo.
               </motion.h1>
-
               <motion.div
                 layoutId="buttonContainer"
                 className="flex items-center justify-center"
@@ -110,6 +128,16 @@ const App = () => {
                 >
                   Fullscreen
                 </motion.button>
+              </motion.div>{' '}
+              <motion.div
+                layoutId="logo"
+                className="flex items-center justify-between gap-4"
+              >
+                <LazyImage
+                  image={roboservice}
+                  className="h-50 w-50 rounded-full object-cover"
+                />
+                <LazyImage image={davlatAka} className="h-50  " />
               </motion.div>
             </motion.div>
           </motion.div>

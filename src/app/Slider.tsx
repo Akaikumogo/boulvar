@@ -24,7 +24,7 @@ const Slider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   return (
-    <div className=" select-none  puff-in-center relative min-w-[1098px] min-h-[686px] for-max max-w-[1099px]max-h-[686px] w-full h-full ">
+    <div className=" select-none  puff-in-center relative min-w-[1820px] min-h-[1080px] for-max max-w-[1099px]max-h-[686px] w-full h-full ">
       <Swiper
         onSlideChange={(swiper) => setCurrentSlide(swiper.realIndex)}
         className=" select-nonefor-max max-w-[1920px]max-h-[1080px] w-full h-full"

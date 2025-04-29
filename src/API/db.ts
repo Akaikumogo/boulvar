@@ -8,7 +8,7 @@ export type roomDto = {
   status: 'empty' | 'broned' | 'selled';
 };
 const api = axios.create({
-  baseURL: 'http://localhost:3000/',
+  baseURL: 'http://185.217.131.96:1818/',
   headers: {
     Accept: 'application/x-www-form-urlencoded',
     'Content-Type': 'application/x-www-form-urlencoded'

@@ -35,10 +35,8 @@ const PageLayout = () => {
   ];
   const navigate = useNavigate();
   useEffect(() => {
-    if (lang !== 'eng') {
-      if (lang !== 'tr') {
-        navigate('/eng');
-      }
+    if (lang !== 'eng' && lang !== 'rus' && lang !== 'uzb') {
+      navigate('/eng');
     }
   }, [lang, navigate]);
   const navValue = window.location.pathname.split('/');
@@ -102,9 +100,9 @@ const PageLayout = () => {
                   items={items}
                 />
               </div>{' '}
-              <div className="h-[5%]">
+              <div className="h-[5%] w-full  flex items-center justify-center">
                 <Select
-                  className="w-[50%]  ml-[12px]"
+                  className="w-[90%]  mx-auto"
                   placeholder="language"
                   onChange={(value) => {
                     const [, , ...restOfPath] =
@@ -126,14 +124,26 @@ const PageLayout = () => {
                       )
                     },
                     {
-                      value: 'tr',
+                      value: 'rus',
                       label: (
                         <div className="flex items-center justify-start gap-[10px]">
                           <img
-                            src="https://flagsapi.com/TR/shiny/32.png"
+                            src="https://flagsapi.com/RU/shiny/32.png"
                             alt=""
                           />
-                          Türkçe
+                          Русский
+                        </div>
+                      )
+                    },
+                    {
+                      value: 'uzb',
+                      label: (
+                        <div className="flex items-center justify-start gap-[10px]">
+                          <img
+                            src="https://flagsapi.com/UZ/shiny/32.png"
+                            alt=""
+                          />
+                          O'zbekcha
                         </div>
                       )
                     }

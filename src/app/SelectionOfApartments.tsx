@@ -729,7 +729,7 @@ const SelectionOfApartments = () => {
       <div className=" z-[50] gap-[10px] flex flex-col items-center  absolute w-[400px] p-5  g   rounded-xl glass  top-[100px] left-[10px]">
         <div className="w-full  shadow-md gap-[10px] glass  p-2 border  border-zinc-300 px-[25px] rounded-xl flex items-center justify-center      ">
           <div className="w-[25%] puff-in-center text-[14px]">
-            {lang === 'tr' ? 'Apartman' : 'Apartment'}:
+            {lang === 'rus' ? 'Квартира' : lang === 'uzb' ? "Kvartira" : 'Apartment'}:
           </div>
           <div className="w-[75%]">
             <Select
@@ -749,22 +749,22 @@ const SelectionOfApartments = () => {
               variant={'borderless'}
               className="w-full"
               value={selection.block === 0 ? undefined : selection.block}
-              placeholder={lang === 'tr' ? 'Blok seç' : 'Select block'}
+              placeholder={lang === 'tr' ? 'Blok seç' : lang === 'rus' ? 'Выберите блок' : lang === 'uzb' ? "Blokni tanlang" : 'Select block'}
               options={[
                 {
-                  label: lang === 'tr' ? 'Blok 1' : 'Block 1',
+                  label: lang === 'tr' ? 'Blok 1' : lang === 'rus' ? 'Блок 1' : lang === 'uzb' ? "Blok 1" : 'Block 1',
                   value: 1
                 },
                 {
-                  label: lang === 'tr' ? 'Blok 2' : 'Block 2',
+                  label: lang === 'tr' ? 'Blok 2' : lang === 'rus' ? 'Блок 2' : lang === 'uzb' ? "Blok 2" : 'Block 2',
                   value: 2
                 },
                 {
-                  label: lang === 'tr' ? 'Blok 3' : 'Block 3',
+                  label: lang === 'tr' ? 'Blok 3' : lang === 'rus' ? 'Блок 3' : lang === 'uzb' ? "Blok 3" : 'Block 3',
                   value: 3
                 },
                 {
-                  label: lang === 'tr' ? 'Blok 4' : 'Block 4',
+                  label: lang === 'tr' ? 'Blok 4' : lang === 'rus' ? 'Блок 4' : lang === 'uzb' ? "Blok 4" : 'Block 4',
                   value: 4
                 }
               ]}
@@ -773,7 +773,7 @@ const SelectionOfApartments = () => {
         </div>
         <div className="w-full  shadow-md gap-[10px] glass  p-2 border  border-zinc-300 px-[25px] rounded-xl flex items-center justify-center      ">
           <div className="w-[25%] puff-in-center text-[14px]">
-            {lang === 'tr' ? 'Kat' : 'Floor'}:
+            {lang === 'uzb' ? 'Qavat' : lang === 'rus' ? 'Этаж' : 'Floor'}:
           </div>
           <div className="w-[75%] ">
             <Select
@@ -794,38 +794,38 @@ const SelectionOfApartments = () => {
               className="w-full"
               value={selection.floor}
               disabled={selection.block === 0}
-              placeholder={lang === 'tr' ? 'Kat seç' : 'Select floor'}
+              placeholder={lang === 'uzb' ? 'Qavat tanlang' : lang === 'rus' ? 'Выберите этаж' : 'Select floor'}
               options={[
                 ...[
                   {
-                    label: lang === 'tr' ? '1. kat' : '1st floor',
+                    label: lang === 'uzb' ? '1-qavat' : lang === 'rus' ? '1-й этаж' : '1st floor',
                     value: 1
                   },
                   {
-                    label: lang === 'tr' ? '2. kat' : '2nd floor',
+                    label: lang === 'uzb' ? '2-qavat' : lang === 'rus' ? '2-й этаж' : '2nd floor',
                     value: 2
                   },
                   {
-                    label: lang === 'tr' ? '3. kat' : '3rd floor',
+                    label: lang === 'uzb' ? '3-qavat' : lang === 'rus' ? '3-й этаж' : '3rd floor',
                     value: 3
                   },
                   {
-                    label: lang === 'tr' ? '4. kat' : '4th floor',
+                    label: lang === 'uzb' ? '4-qavat' : lang === 'rus' ? '4-й этаж' : '4th floor',
                     value: 4
                   },
                   {
-                    label: lang === 'tr' ? '5. kat' : '5th floor',
+                    label: lang === 'uzb' ? '5-qavat' : lang === 'rus' ? '5-й этаж' : '5th floor',
                     value: 5
                   }
                 ],
                 ...(selection.block !== 3
                   ? [
                       {
-                        label: lang === 'tr' ? '6. kat' : '6th floor',
+                        label: lang === 'uzb' ? '6-qavat' : lang === 'rus' ? '6-й этаж' : '6th floor',
                         value: 6
                       },
                       {
-                        label: lang === 'tr' ? '7. kat' : '7th floor',
+                        label: lang === 'uzb' ? '7-qavat' : lang === 'rus' ? '7-й этаж' : '7th floor',
                         value: 7
                       }
                     ]
@@ -836,7 +836,7 @@ const SelectionOfApartments = () => {
         </div>
         <div className="w-full  shadow-md gap-[10px] glass  p-2 border  border-zinc-300 px-[25px] rounded-xl flex items-center justify-center      ">
           <div className="w-[25%] puff-in-center text-[14px]">
-            {lang === 'tr' ? 'Oda' : 'Room'}:
+            {lang === 'uzb' ? 'Xona' : lang === 'rus' ? 'Комната' : 'Room'}:
           </div>
           <div className="w-[75%]">
             <Select
@@ -857,9 +857,9 @@ const SelectionOfApartments = () => {
               className="w-full"
               disabled={selection.block === 0 && selection.floor === 0}
               value={selection.room}
-              placeholder={lang === 'tr' ? 'Oda seç' : 'Select room'}
+              placeholder={lang === 'uzb' ? 'Xona tanlang' : lang === 'rus' ? 'Выберите комнату' : 'Select room'}
               options={rooms?.map((apartment: roomDto) => ({
-                label: ` ${apartment.room} ${lang === 'tr' ? 'Oda' : 'Room'}`,
+                label: ` ${apartment.room} ${lang === 'uzb' ? 'Xona' : lang === 'rus' ? 'Комната' : 'Room'}`,
                 value: apartment.room
               }))}
             />

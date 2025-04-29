@@ -3,7 +3,7 @@ import { Outlet, useNavigate, useParams } from 'react-router-dom';
 
 const NavigatePage = () => {
   const navigate = useNavigate();
-  const defaultLang = 'uz';
+  const defaultLang = 'uzb';
   const { lang } = useParams();
 
   useEffect(() => {
