@@ -76,20 +76,13 @@ const App = () => {
               ></motion.div>
               <motion.div
                 layoutId="logo"
-                className="flex items-center justify-center gap-4"
+                className="flex items-center justify-between gap-4"
               >
                 <LazyImage
-                  src={roboservice}
-                  alt="RoboService"
-                  className="h-32 w-32 rounded-full object-cover"
-                  effect="blur"
+                  image={roboservice}
+                  className="h-50 w-50 rounded-full object-cover"
                 />
-                <LazyImage
-                  src={davlatAka}
-                  alt="Davlat Aka"
-                  className="h-32 w-32 rounded-full object-cover"
-                  effect="blur"
-                />
+                <LazyImage image={davlatAka} className="h-50  " />
               </motion.div>
             </motion.div>
           </motion.div>
