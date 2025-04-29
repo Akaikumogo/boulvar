@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { BiSolidChess } from 'react-icons/bi';
 import { BsFillBuildingsFill } from 'react-icons/bs';
 import { CgClose } from 'react-icons/cg';
-
+import davlatAka from '../assets/logo/tarh.png';
 import { GiHamburgerMenu } from 'react-icons/gi';
 
 import { Outlet, useNavigate, useParams } from 'react-router-dom';
@@ -20,17 +20,29 @@ const PageLayout = () => {
     {
       key: '',
       icon: <HomeOutlined />,
-      label: lang === 'eng' ? 'Home Page' : 'Ana sayfa'
+      label: {
+        eng: 'Home Page',
+        uzb: 'Bosh sahifa',
+        rus: 'Главная страница'
+      }[lang as 'eng']
     },
     {
       key: 'selling-apartments',
       icon: <BsFillBuildingsFill />,
-      label: lang === 'eng' ? 'Selling department' : 'Satış departmanı'
+      label: {
+        eng: 'Selling department',
+        uzb: "Sotuv bo'limi",
+        rus: 'Отдел продаж'
+      }[lang as 'eng']
     },
     {
       key: 'table',
       icon: <BiSolidChess />,
-      label: lang === 'eng' ? 'Table' : 'Tablo'
+      label: {
+        eng: 'Table',
+        uzb: 'Jadval',
+        rus: 'Таблица'
+      }[lang as 'eng']
     }
   ];
   const navigate = useNavigate();
@@ -42,7 +54,10 @@ const PageLayout = () => {
   const navValue = window.location.pathname.split('/');
 
   return (
-    <div className="w-screen h-screen bg-[#f5f5f5]  relative">
+    <div className="w-screen h-screen min-w-[1820px] min-h-[1080px] bg-[#f5f5f5]  relative">
+      <div className="absolute z-[6000] bottom-5 right-5">
+        <img src={davlatAka} width={65} alt="" />
+      </div>
       <button className=" bg-white cursor-pointer w-[40px] h-[40px] rounded-full flex items-center justify-center absolute top-[30px] left-[30px] z-50 active:scale-95 transition-all duration-200">
         <div onClick={() => setOpen(true)}>
           <GiHamburgerMenu className="text-[25px] text-black" />
@@ -75,11 +90,9 @@ const PageLayout = () => {
           open={open}
         >
           <div className="w-full h-full flex flex-col items-start justify-start py-[10px] ">
-            <div className="dancing-script font-bold w-full  h-[10%] px-[10px] text-[36px] flex items-center justify-between">
+            <div className="dancing-script font-bold w-full  h-[5%] px-[10px] text-[36px] flex items-center justify-between">
               <div className="flex items-center justify-between gap-[10px] w-full px-[10px]">
-                <span className="text-[20px]">
-                  {lang === 'eng' ? 'Boulvar' : 'Boulevard'}
-                </span>
+                <span className="text-[20px]">Boulvar</span>
               </div>
               <div className="rounded-full " onClick={() => setOpen(false)}>
                 <CgClose className="" />

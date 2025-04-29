@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from 'motion/react';
 import { Spotlight } from '../Spotlights';
 import Layout from '../Layout/Layout';
 import roboservice from '../assets/logo/ROBO SERVICEs.png';
-import davlatAka from '../assets/logo/SILVER TEA0 (1).png';
+import davlatAka from '../assets/logo/tarh.png';
 import LazyImage from '../components/LazyImage';
 const App = () => {
   const navigate = useNavigate();
@@ -59,7 +59,7 @@ const App = () => {
           <Spotlight />
           <motion.div
             layoutId="container"
-            className="relative min-w-[1820px] min-h-[1080px] flex items-center justify-center z-10 mx-auto w-full max-w-7xl p-4 pt-20 md:pt-0"
+            className="relative min-w-[1820px] min-h-[1080px] flex items-center justify-center z-10 mx-auto w-full  p-4 pt-20 md:pt-0"
           >
             <motion.div layoutId="content">
               <motion.h1
@@ -76,7 +76,7 @@ const App = () => {
               ></motion.div>
               <motion.div
                 layoutId="logo"
-                className="flex items-center justify-between gap-4"
+                className="flex items-center justify-evenly gap-4"
               >
                 <LazyImage
                   image={roboservice}
@@ -101,7 +101,7 @@ const App = () => {
           <Spotlight />
           <motion.div
             layoutId="container"
-            className="relative min-w-[1820px] min-h-[1080px] flex items-center justify-center z-10 mx-auto w-full max-w-7xl  pt-20 md:pt-0"
+            className="relative min-w-[1820px] min-h-[1080px] flex items-center justify-center z-10 mx-auto w-full pt-20 md:pt-0"
           >
             <motion.div layoutId="content">
               <motion.h1
@@ -124,7 +124,7 @@ const App = () => {
               </motion.div>{' '}
               <motion.div
                 layoutId="logo"
-                className="flex items-center justify-between gap-4"
+                className="flex items-center justify-evenly gap-4"
               >
                 <LazyImage
                   image={roboservice}

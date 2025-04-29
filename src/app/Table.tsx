@@ -14,7 +14,7 @@ export type roomDto = {
 };
 // eslint-disable-next-line react-refresh/only-export-components
 export function calculateRoomNumber(apartment: roomDto, arrLength: number) {
-  const roomsPerFloor = arrLength === 25 ? 5 : 4;
+  const roomsPerFloor = arrLength === 48 ? 7 : 4;
   const floorOffset = (apartment.floor - 1) * roomsPerFloor;
   return floorOffset + apartment.room;
 }
@@ -23,16 +23,16 @@ const RoomTable = () => {
   const { data: allAppartments, isSuccess } = useGetAll();
   const { lang } = useParams();
   const ablock = allAppartments?.filter(
-    (apartment: roomDto) => apartment.block === 'block3'
-  );
-  const cblock = allAppartments?.filter(
     (apartment: roomDto) => apartment.block === 'block1'
   );
+  const cblock = allAppartments?.filter(
+    (apartment: roomDto) => apartment.block === 'block3'
+  );
   const bblock = allAppartments?.filter(
-    (apartment: roomDto) => apartment.block === 'block4'
+    (apartment: roomDto) => apartment.block === 'block2'
   );
   const dblock = allAppartments?.filter(
-    (apartment: roomDto) => apartment.block === 'block2'
+    (apartment: roomDto) => apartment.block === 'block4'
   );
 
   // const { mutate: update } = useUpdate();
@@ -77,7 +77,7 @@ const RoomTable = () => {
   //    );
   // };
   const mapF = (arr: roomDto[]) =>
-    arr?.map((apartment: roomDto) => {
+    arr?.map((apartment: roomDto, index: number) => {
       return (
         <div
           className={`w-[85px] shshsh rounded-xl h-[75px] ${
@@ -101,7 +101,15 @@ const RoomTable = () => {
             <div className=" flex items-center justify-center w-full h-full">
               <h1 className="text-3xl">
                 {/* {lang === 'tr' ? 'Oda' : 'Room'} : */}
-                {calculateRoomNumber(apartment, arr.length)}
+                {index +
+                  1 +
+                  (apartment.block === 'block1'
+                    ? 0
+                    : apartment.block === 'block2'
+                    ? 42
+                    : apartment.block === 'block3'
+                    ? 112
+                    : 160)}
               </h1>
             </div>
           )}
@@ -124,12 +132,12 @@ const RoomTable = () => {
                 (apartment) => apartment.status === 'empty'
               ).length
             }
-            |90|
+            |202|
             {Math.round(
               ((allAppartments?.filter(
                 (apartment) => apartment.status === 'empty'
               )?.length || 0) /
-                90) *
+                202) *
                 100
             )}
             %
@@ -147,12 +155,12 @@ const RoomTable = () => {
                 (apartment) => apartment.status === 'broned'
               ).length
             }
-            |90|
+            |202|
             {Math.round(
               ((allAppartments?.filter(
                 (apartment) => apartment.status === 'broned'
               )?.length || 0) /
-                90) *
+                202) *
                 100
             )}
             %
@@ -165,12 +173,12 @@ const RoomTable = () => {
                 (apartment) => apartment.status === 'selled'
               ).length
             }
-            |90|{' '}
+            |202|{' '}
             {Math.round(
               ((allAppartments?.filter(
                 (apartment) => apartment.status === 'selled'
               )?.length || 0) /
-                90) *
+                202) *
                 100
             )}
             %
@@ -191,11 +199,11 @@ const RoomTable = () => {
                   ablock?.filter((apartment) => apartment.status === 'empty')
                     .length
                 }
-                |25|
+                |42|
                 {Math.round(
                   ((ablock?.filter((apartment) => apartment.status === 'empty')
                     ?.length || 0) /
-                    25) *
+                    42) *
                     100
                 )}
                 %
@@ -212,11 +220,11 @@ const RoomTable = () => {
                   ablock?.filter((apartment) => apartment.status === 'broned')
                     .length
                 }
-                |25|
+                |42|
                 {Math.round(
                   ((ablock?.filter((apartment) => apartment.status === 'broned')
                     ?.length || 0) /
-                    25) *
+                    42) *
                     100
                 )}
                 %
@@ -233,11 +241,11 @@ const RoomTable = () => {
                   ablock?.filter((apartment) => apartment.status === 'selled')
                     .length
                 }
-                |25|{' '}
+                |42|{' '}
                 {Math.round(
                   ((ablock?.filter((apartment) => apartment.status === 'selled')
                     ?.length || 0) /
-                    25) *
+                    42) *
                     100
                 )}
                 %
@@ -261,11 +269,11 @@ const RoomTable = () => {
                   cblock?.filter((apartment) => apartment.status === 'empty')
                     .length
                 }
-                |20|
+                |70|
                 {Math.round(
                   ((cblock?.filter((apartment) => apartment.status === 'empty')
                     ?.length || 0) /
-                    20) *
+                    70) *
                     100
                 )}
                 %
@@ -282,11 +290,11 @@ const RoomTable = () => {
                   bblock?.filter((apartment) => apartment.status === 'broned')
                     .length
                 }
-                |20|
+                |70|
                 {Math.round(
                   ((bblock?.filter((apartment) => apartment.status === 'broned')
                     ?.length || 0) /
-                    20) *
+                    70) *
                     100
                 )}
                 %
@@ -303,11 +311,11 @@ const RoomTable = () => {
                   bblock?.filter((apartment) => apartment.status === 'selled')
                     .length
                 }
-                |20|{' '}
+                |70|{' '}
                 {Math.round(
                   ((bblock?.filter((apartment) => apartment.status === 'selled')
                     ?.length || 0) /
-                    20) *
+                    70) *
                     100
                 )}
                 %
@@ -331,11 +339,11 @@ const RoomTable = () => {
                   cblock?.filter((apartment) => apartment.status === 'empty')
                     .length
                 }
-                |20|
+                |48|
                 {Math.round(
                   ((cblock?.filter((apartment) => apartment.status === 'empty')
                     ?.length || 0) /
-                    20) *
+                    48) *
                     100
                 )}
                 %
@@ -352,11 +360,11 @@ const RoomTable = () => {
                   cblock?.filter((apartment) => apartment.status === 'broned')
                     .length
                 }
-                |20|
+                |48|
                 {Math.round(
                   ((cblock?.filter((apartment) => apartment.status === 'broned')
                     ?.length || 0) /
-                    20) *
+                    48) *
                     100
                 )}
                 %
@@ -373,11 +381,11 @@ const RoomTable = () => {
                   cblock?.filter((apartment) => apartment.status === 'selled')
                     .length
                 }
-                |20|{' '}
+                |48|{' '}
                 {Math.round(
                   ((cblock?.filter((apartment) => apartment.status === 'selled')
                     ?.length || 0) /
-                    20) *
+                    48) *
                     100
                 )}
                 %
@@ -401,11 +409,11 @@ const RoomTable = () => {
                   dblock?.filter((apartment) => apartment.status === 'empty')
                     .length
                 }
-                |20|
+                |42|
                 {Math.round(
                   ((dblock?.filter((apartment) => apartment.status === 'empty')
                     ?.length || 0) /
-                    20) *
+                    42) *
                     100
                 )}
                 %
@@ -422,11 +430,11 @@ const RoomTable = () => {
                   dblock?.filter((apartment) => apartment.status === 'broned')
                     .length
                 }
-                |20|
+                |42|
                 {Math.round(
                   ((dblock?.filter((apartment) => apartment.status === 'broned')
                     ?.length || 0) /
-                    20) *
+                    42) *
                     100
                 )}
                 %
@@ -443,11 +451,11 @@ const RoomTable = () => {
                   dblock?.filter((apartment) => apartment.status === 'selled')
                     .length
                 }
-                |20|{' '}
+                |42|{' '}
                 {Math.round(
                   ((dblock?.filter((apartment) => apartment.status === 'selled')
                     ?.length || 0) /
-                    20) *
+                    42) *
                     100
                 )}
                 %
