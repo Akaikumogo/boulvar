@@ -55,7 +55,7 @@ const PageLayout = () => {
 
   return (
     <div className="w-screen h-screen min-w-[1820px] min-h-[1080px] bg-[#f5f5f5]  relative">
-      <div className="absolute z-[6000] bottom-5 right-5">
+      <div className="absolute z-[6000] bottom-10 right-15">
         <img src={davlatAka} width={65} alt="" />
       </div>
       <button className=" bg-white cursor-pointer w-[40px] h-[40px] rounded-full flex items-center justify-center absolute top-[30px] left-[30px] z-50 active:scale-95 transition-all duration-200">

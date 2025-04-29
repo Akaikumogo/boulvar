@@ -101,15 +101,7 @@ const RoomTable = () => {
             <div className=" flex items-center justify-center w-full h-full">
               <h1 className="text-3xl">
                 {/* {lang === 'tr' ? 'Oda' : 'Room'} : */}
-                {index +
-                  1 +
-                  (apartment.block === 'block1'
-                    ? 0
-                    : apartment.block === 'block2'
-                    ? 42
-                    : apartment.block === 'block3'
-                    ? 112
-                    : 160)}
+                {index + 1}
               </h1>
             </div>
           )}

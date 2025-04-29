@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import background from '../assets/Yellow bloks/back.png';
 import yellow1 from '../assets/Yellow bloks/1-blok.png';
 import yellow2 from '../assets/Yellow bloks/2-blok.png';
@@ -89,10 +89,16 @@ import etaj32 from '../assets/plans/3 blok/2-5- etaj/etaj.png';
 import { useParams } from 'react-router-dom';
 import '../index.css';
 import { usePostRequst } from '../API';
-import { Select, Image } from 'antd';
+import { Select, Image, Button } from 'antd';
 import { useGetAll, useGetById, useUpdate } from '../API/db';
 // import { calculateRoomNumber } from './Table';
-
+import random1 from '../assets/Blue bloks/1.png';
+import random2 from '../assets/Blue bloks/2.png';
+import random3 from '../assets/Blue bloks/3.png';
+import random4 from '../assets/Blue bloks/4.png';
+import random5 from '../assets/Blue bloks/5.png';
+import random6 from '../assets/Blue bloks/6.png';
+import { AnimatePresence, motion } from 'motion/react';
 export type roomDto = {
   _id: string;
   block: 'block1' | 'block2' | 'block3' | 'block4';
@@ -126,22 +132,6 @@ const SelectionOfApartments = () => {
 
   const { mutate } = usePostRequst();
 
-  const getCurrentImage = () => {
-    if (selection.block) {
-      switch (selection.block) {
-        case 1:
-          return yellow1;
-        case 2:
-          return yellow2;
-        case 3:
-          return yellow3;
-        case 4:
-          return yellow4;
-        default:
-          return background;
-      }
-    }
-  };
   const { lang } = useParams();
   const { data: byId, refetch: refetch2 } = useGetById(
     rooms?.find((room: roomDto) => room.room === selection.room)?._id || ''
@@ -664,6 +654,69 @@ const SelectionOfApartments = () => {
     });
   };
   const [visible, setVisible] = useState(false);
+  const [random, setRandom] = useState<number>(0);
+  const randomImages = {
+    0: '',
+    1: random1,
+    2: random2,
+    3: random3,
+    4: random4,
+    5: random5,
+    6: random6
+  };
+  const getCurrentImage = () => {
+    if (selection.block && random === 0) {
+      switch (selection.block) {
+        case 1:
+          return yellow1;
+        case 2:
+          return yellow2;
+        case 3:
+          return yellow3;
+        case 4:
+          return yellow4;
+        default:
+          return background;
+      }
+    }
+    if (random !== 0) {
+      return (randomImages as any)[random] || background;
+    }
+  };
+  const [randomVisable, setRandomVisable] = useState(false);
+  useEffect(() => {
+    if (randomVisable) {
+      const intervalId = setInterval(() => {
+        setRandom((p) =>
+          p === 0
+            ? 1
+            : p == 1
+            ? 3
+            : p == 2
+            ? 6
+            : p == 3
+            ? 2
+            : p == 4
+            ? 1
+            : p == 5
+            ? 5
+            : 0
+        );
+      }, 1000);
+
+      return () => clearInterval(intervalId);
+    }
+  }, [randomVisable]);
+  useEffect(() => {
+    if (selection.block) {
+      setRandomVisable(false);
+      setRandom(0);
+    } else {
+      setRandomVisable(true);
+      setRandom(1);
+    }
+  }, [selection]);
+
   return (
     <div className=" select-none  puff-in-center relative min-w-[1820px] min-h-[1080px] for-max max-w-[1099px]max-h-[686px] w-full h-full ">
       <div
@@ -842,77 +895,81 @@ const SelectionOfApartments = () => {
                   ? 'Выберите этаж'
                   : 'Select floor'
               }
-              options={[
-                ...[
-                  {
-                    label:
-                      lang === 'uzb'
-                        ? '1-qavat'
-                        : lang === 'rus'
-                        ? '1-й этаж'
-                        : '1st floor',
-                    value: 1
-                  },
-                  {
-                    label:
-                      lang === 'uzb'
-                        ? '2-qavat'
-                        : lang === 'rus'
-                        ? '2-й этаж'
-                        : '2nd floor',
-                    value: 2
-                  },
-                  {
-                    label:
-                      lang === 'uzb'
-                        ? '3-qavat'
-                        : lang === 'rus'
-                        ? '3-й этаж'
-                        : '3rd floor',
-                    value: 3
-                  },
-                  {
-                    label:
-                      lang === 'uzb'
-                        ? '4-qavat'
-                        : lang === 'rus'
-                        ? '4-й этаж'
-                        : '4th floor',
-                    value: 4
-                  },
-                  {
-                    label:
-                      lang === 'uzb'
-                        ? '5-qavat'
-                        : lang === 'rus'
-                        ? '5-й этаж'
-                        : '5th floor',
-                    value: 5
-                  }
-                ],
-                ...(selection.block !== 3
-                  ? [
-                      {
-                        label:
-                          lang === 'uzb'
-                            ? '6-qavat'
-                            : lang === 'rus'
-                            ? '6-й этаж'
-                            : '6th floor',
-                        value: 6
-                      },
-                      {
-                        label:
-                          lang === 'uzb'
-                            ? '7-qavat'
-                            : lang === 'rus'
-                            ? '7-й этаж'
-                            : '7th floor',
-                        value: 7
-                      }
+              options={
+                !selection.block
+                  ? []
+                  : [
+                      ...[
+                        {
+                          label:
+                            lang === 'uzb'
+                              ? '1-qavat'
+                              : lang === 'rus'
+                              ? '1-й этаж'
+                              : '1st floor',
+                          value: 1
+                        },
+                        {
+                          label:
+                            lang === 'uzb'
+                              ? '2-qavat'
+                              : lang === 'rus'
+                              ? '2-й этаж'
+                              : '2nd floor',
+                          value: 2
+                        },
+                        {
+                          label:
+                            lang === 'uzb'
+                              ? '3-qavat'
+                              : lang === 'rus'
+                              ? '3-й этаж'
+                              : '3rd floor',
+                          value: 3
+                        },
+                        {
+                          label:
+                            lang === 'uzb'
+                              ? '4-qavat'
+                              : lang === 'rus'
+                              ? '4-й этаж'
+                              : '4th floor',
+                          value: 4
+                        },
+                        {
+                          label:
+                            lang === 'uzb'
+                              ? '5-qavat'
+                              : lang === 'rus'
+                              ? '5-й этаж'
+                              : '5th floor',
+                          value: 5
+                        }
+                      ],
+                      ...(selection.block !== 3
+                        ? [
+                            {
+                              label:
+                                lang === 'uzb'
+                                  ? '6-qavat'
+                                  : lang === 'rus'
+                                  ? '6-й этаж'
+                                  : '6th floor',
+                              value: 6
+                            },
+                            {
+                              label:
+                                lang === 'uzb'
+                                  ? '7-qavat'
+                                  : lang === 'rus'
+                                  ? '7-й этаж'
+                                  : '7th floor',
+                              value: 7
+                            }
+                          ]
+                        : [])
                     ]
-                  : [])
-              ]}
+              }
             />
           </div>
         </div>
@@ -973,12 +1030,30 @@ const SelectionOfApartments = () => {
             />
           </div>
         </div>
+        <div className="w-full">
+          <Button
+            type="primary"
+            size="large"
+            className={' w-full '}
+            onClick={() => {
+              mutate({ data: '66666' });
+              setRandomVisable(true);
+              setSelection({
+                block: undefined,
+                floor: undefined,
+                room: undefined
+              });
+            }}
+          >
+            {lang === 'eng' ? 'Random' : lang === 'rus' ? 'Случайно' : 'Random'}
+          </Button>
+        </div>
       </div>
       {currentRoom && selection.room && (
-        <div className=" z-[50] gap-[20px] flex flex-col items-center  absolute w-[200px] p-5  g   rounded-xl glass  top-[100px] right-[10px]">
+        <div className=" z-[7002] gap-[20px] flex flex-col items-center  absolute w-[300px] p-5  g   rounded-xl glass  top-[100px] right-[10px]">
           <button
             onClick={() => handleChanges('empty')}
-            className={` min-w-[150px] rounded-xl transition-all text-center ${
+            className={` min-w-[250px] rounded-xl transition-all text-center ${
               currentRoom.status === 'empty'
                 ? ' text-white bg-[#1eb443]'
                 : 'glass shadow-3xl shadow'
@@ -992,7 +1067,7 @@ const SelectionOfApartments = () => {
           </button>
           <button
             onClick={() => handleChanges('broned')}
-            className={` min-w-[150px] rounded-xl transition-all text-center ${
+            className={` min-w-[250px] rounded-xl transition-all text-center ${
               currentRoom.status === 'broned'
                 ? ' text-white bg-[#316fff] '
                 : 'glass shadow-3xl shadow'
@@ -1006,7 +1081,7 @@ const SelectionOfApartments = () => {
           </button>
           <button
             onClick={() => handleChanges('selled')}
-            className={` min-w-[150px] rounded-xl transition-all text-center ${
+            className={` min-w-[250px] rounded-xl transition-all text-center ${
               currentRoom.status === 'selled'
                 ? ' text-white bg-[#f01717] '
                 : 'glass shadow-3xl shadow'
@@ -1021,11 +1096,29 @@ const SelectionOfApartments = () => {
         alt=""
         className=" select-none w-full h-full min-w-[1820px] min-h-[1080px] for-max max-w-[1099px]max-h-[686px] object-cover absolute z-40 "
       />
-      <img
-        src={getCurrentImage()}
-        alt=""
-        className=" select-none w-full h-full min-w-[1820px] min-h-[1080px] for-max max-w-[1099px]max-h-[686px] object-cover absolute z-40 fade-in-out"
-      />
+      {randomVisable ? null : (
+        <img
+          src={getCurrentImage()}
+          alt=""
+          className=" select-none w-full h-full min-w-[1820px] min-h-[1080px] for-max max-w-[1099px]max-h-[686px] object-cover absolute z-40 fade-in-out"
+        />
+      )}
+      <AnimatePresence mode="wait">
+        {randomVisable ? (
+          <motion.img
+            key={random}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{
+              opacity: { duration: 1, ease: 'easeInOut' }
+            }}
+            src={getCurrentImage()}
+            alt=""
+            className="transition-all duration-1000 select-none w-full h-full min-w-[1820px] min-h-[1080px] for-max max-w-[1099px]max-h-[686px] object-cover absolute z-40 "
+          />
+        ) : null}{' '}
+      </AnimatePresence>
       {selection.floor || selection.room ? (
         <div
           onClick={() =>
