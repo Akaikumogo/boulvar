@@ -259,7 +259,6 @@ const SelectionOfApartments = () => {
       8: b3f1r8,
       9: b3f1r9,
       10: b3f1r10,
-
       back: etaj31
     },
     floor27: {
@@ -483,6 +482,14 @@ const SelectionOfApartments = () => {
                 case 106:
                   return block3.floor1[6];
 
+                case 107:
+                  return block3.floor1[7];
+                case 108:
+                  return block3.floor1[8];
+                case 109:
+                  return block3.floor1[9];
+                case 110:
+                  return block3.floor1[10];
                 default:
                   return block3.floor1.back;
               }
@@ -535,6 +542,34 @@ const SelectionOfApartments = () => {
                 case 606:
                 case 706:
                   return block3.floor27[6];
+                case 207:
+                case 307:
+                case 407:
+                case 507:
+                case 607:
+                case 707:
+                  return block3.floor27[7];
+                case 208:
+                case 308:
+                case 408:
+                case 508:
+                case 608:
+                case 708:
+                  return block3.floor27[8];
+                case 209:
+                case 309:
+                case 409:
+                case 509:
+                case 609:
+                case 709:
+                  return block3.floor27[9];
+                case 210:
+                case 310:
+                case 410:
+                case 510:
+                case 610:
+                case 710:
+                  return block3.floor27[10];
 
                 default:
                   console.error(selection);
