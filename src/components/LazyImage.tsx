@@ -8,7 +8,7 @@ const LazyImage = ({ image, className }: any): JSX.Element => {
   return (
     <div className={``}>
       <LazyLoadImage
-        alt={image.alt || ''}
+        alt={''}
         height={image.height}
         src={image}
         width={image.width}
