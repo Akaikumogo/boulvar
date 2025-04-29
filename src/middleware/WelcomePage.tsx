@@ -66,8 +66,8 @@ const App = () => {
                 layoutId="title"
                 className="bg-opacity-50 bg-gradient-to-b from-neutral-50 to-neutral-400 bg-clip-text text-center text-4xl font-bold text-transparent md:text-7xl"
               >
-                Boulvar <br /> RoboService <span className="font-light">x</span>{' '}
-                Akaikumogo.
+                Boulevard <br /> RoboService{' '}
+                <span className="font-light">x</span> Akaikumogo.
               </motion.h1>
 
               <motion.div
@@ -108,8 +108,8 @@ const App = () => {
                 layoutId="title"
                 className="bg-opacity-50  my-2 py-4 bg-gradient-to-b from-neutral-50 to-neutral-400 bg-clip-text text-center text-4xl font-bold text-transparent md:text-7xl"
               >
-                Boulvar <br /> RoboService <span className="font-light">x</span>{' '}
-                Akaikumogo.
+                Boulevard <br /> RoboService{' '}
+                <span className="font-light">x</span> Akaikumogo.
               </motion.h1>
               <motion.div
                 layoutId="buttonContainer"

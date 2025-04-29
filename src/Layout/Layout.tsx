@@ -93,7 +93,7 @@ const PageLayout = () => {
           <div className="w-full h-full flex flex-col items-start justify-start py-[10px] ">
             <div className="dancing-script font-bold w-full  h-[5%] px-[10px] text-[36px] flex items-center justify-between">
               <div className="flex items-center justify-between gap-[10px] w-full px-[10px]">
-                <span className="text-[20px]">Boulvar</span>
+                <span className="text-[20px]">Boulevard</span>
               </div>
               <div className="rounded-full " onClick={() => setOpen(false)}>
                 <CgClose className="" />

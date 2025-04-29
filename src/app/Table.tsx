@@ -116,7 +116,7 @@ const RoomTable = () => {
           for-max  overflow-auto flex flex-col gap-10  w-full h-full px-[100px] py-[100px] "
       >
         <div className="w-full flex  gap-1 text-center text-2xl font-bold">
-          <h1>Boulvar</h1>|
+          <h1>Boulevard</h1>|
           <h1 className="font-mono text-[12px] text-green-600">
             {lang === 'uz' ? "Bo'sh" : lang === 'ru' ? 'Свободно' : 'Empty'}:{' '}
             {
