@@ -70,8 +70,7 @@ import b3f1r5 from '../assets/plans/3 blok/1-etaj/5.png';
 import b3f1r6 from '../assets/plans/3 blok/1-etaj/6.png';
 import b3f1r7 from '../assets/plans/3 blok/1-etaj/7.png';
 import b3f1r8 from '../assets/plans/3 blok/1-etaj/8.png';
-import b3f1r9 from '../assets/plans/3 blok/1-etaj/9.png';
-import b3f1r10 from '../assets/plans/3 blok/1-etaj/10.png';
+
 import etaj31 from '../assets/plans/3 blok/1-etaj/etaj.png';
 //3-block 2-etaj
 import b3f2r1 from '../assets/plans/3 blok/2-5- etaj/1.png';
@@ -139,6 +138,7 @@ const SelectionOfApartments = () => {
   const currentRoom =
     byId || rooms?.find((room: roomDto) => room.room === selection.room);
   const { mutate: update } = useUpdate();
+
   const handleSubmit = (data: {
     block: number | undefined;
     floor: number | undefined;
@@ -168,7 +168,7 @@ const SelectionOfApartments = () => {
               : data.block === 3
               ? 'C'
               : 'D'
-          }${data.floor.toString().slice(1)}${data.room}${
+          }${data.floor}${data.room.toString().slice(1)}${
             data.status === 'selled'
               ? '1'
               : data.status === 'broned'
@@ -257,8 +257,6 @@ const SelectionOfApartments = () => {
       6: b3f1r6,
       7: b3f1r7,
       8: b3f1r8,
-      9: b3f1r9,
-      10: b3f1r10,
       back: etaj31
     },
     floor27: {
@@ -486,10 +484,6 @@ const SelectionOfApartments = () => {
                   return block3.floor1[7];
                 case 108:
                   return block3.floor1[8];
-                case 109:
-                  return block3.floor1[9];
-                case 110:
-                  return block3.floor1[10];
                 default:
                   return block3.floor1.back;
               }
@@ -680,10 +674,34 @@ const SelectionOfApartments = () => {
       data: !data.block
         ? '0000'
         : data.floor === undefined
-        ? `${data.block}${data.block}${data.block}${data.block}`
+        ? `${
+            data.block === 'block1'
+              ? 'A'
+              : data.block === 'block2'
+              ? 'B'
+              : data.block === 'block3'
+              ? 'C'
+              : 'D'
+          }${0}${0}${0}`
         : data.room === undefined
-        ? `${data.block}${data.floor}`
-        : `${data.block}${data.floor}${data.room}${
+        ? `${
+            data.block === 'block1'
+              ? 'A'
+              : data.block === 'block2'
+              ? 'B'
+              : data.block === 'block3'
+              ? 'C'
+              : 'D'
+          }${data.floor}`
+        : `${
+            data.block === 'block1'
+              ? 'A'
+              : data.block === 'block2'
+              ? 'B'
+              : data.block === 'block3'
+              ? 'C'
+              : 'D'
+          }${data.floor}${data.room.toString().slice(1)}${
             status === 'selled' ? '1' : status === 'broned' ? '3' : '2'
           }`
     });
@@ -1109,7 +1127,7 @@ const SelectionOfApartments = () => {
             } p-[10px]`}
           >
             {lang === 'uzb'
-              ? 'Rezervatsiya qilish'
+              ? 'Bron qilish'
               : lang === 'rus'
               ? 'Забронировать'
               : 'Booking'}
