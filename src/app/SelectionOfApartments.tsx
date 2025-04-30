@@ -168,7 +168,12 @@ const SelectionOfApartments = () => {
               : data.block === 3
               ? 'C'
               : 'D'
-          }${data.floor}${data.room.toString().slice(1)}${
+          }${data.floor}${(data.block === 3 && data.floor === 1
+            ? data.room + 2
+            : data.room
+          )
+            .toString()
+            .slice(1)}${
             data.status === 'selled'
               ? '1'
               : data.status === 'broned'
@@ -1071,7 +1076,7 @@ const SelectionOfApartments = () => {
                     : apartment.block === 'block3'
                     ? apartment.floor === 1
                       ? 0
-                      : (apartment.floor - 1) * 10
+                      : (apartment.floor - 1) * 10 - 2
                     : apartment.floor === 1
                     ? 0
                     : (apartment.floor - 1) * 6)
